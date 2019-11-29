@@ -1,5 +1,5 @@
 import time
-from machine import enable_irq, disable_irq,  Pin
+from machine import enable_irq, disable_irq
 
 
 class DTHResult:
@@ -25,7 +25,7 @@ class DTHResult:
 class DTH:
     'DHT sensor (dht11, dht21,dht22) reader class for Pycom'
 
-    #__pin = Pin('P3', mode=Pin.OPEN_DRAIN)
+    #  __pin = Pin('P3', mode=Pin.OPEN_DRAIN)
     __dhttype = 0
 
     def __init__(self, pin, sensor=0):
@@ -34,24 +34,23 @@ class DTH:
         self.__pin(1)
         time.sleep(1.0)
 
-
     def read(self):
-        #time.sleep(1)
+        # time.sleep(1)
 
         # send initial high
-        #self.__send_and_sleep(1, 0.025)
+        # self.__send_and_sleep(1, 0.025)
 
         # pull down to low
         self.__send_and_sleep(0, 0.019)
 
         # collect data into an array
         data = self.__collect_input()
-        #print(data)
+        # print(data)
         # parse lengths of all data pull up periods
         pull_up_lengths = self.__parse_data_pull_up_lengths(data)
         # if bit count mismatch, return error (4 byte data + 1 byte checksum)
-        #print(pull_up_lengths)
-        #print(len(pull_up_lengths))
+        # print(pull_up_lengths)
+        # print(len(pull_up_lengths))
         if len(pull_up_lengths) != 40:
             return DTHResult(DTHResult.ERR_MISSING_DATA, 0, 0)
 
@@ -60,7 +59,7 @@ class DTH:
 
         # we have the bits, calculate bytes
         the_bytes = self.__bits_to_bytes(bits)
-        #print(the_bytes)
+        # print(the_bytes)
         # calculate checksum and check
         checksum = self.__calculate_checksum(the_bytes)
         if the_bytes[4] != checksum:
@@ -68,14 +67,14 @@ class DTH:
 
         # ok, we have valid data, return it
         [int_rh, dec_rh, int_t, dec_t, csum] = the_bytes
-        if self.__dhttype==0:		#dht11
-        	rh = int_rh 		#dht11 20% ~ 90%
-        	t = int_t 	#dht11 0..50°C
-        else:			#dht21,dht22
-        	rh = ((int_rh * 256) + dec_rh)/10
-        	t = (((int_t & 0x7F) * 256) + dec_t)/10
-        	if (int_t & 0x80) > 0:
-        		t *= -1
+        if self.__dhttype == 0:  # dht11
+            rh = int_rh  # dht11 20% ~ 90%
+            t = int_t 	# dht11 0..50°C
+        else:			# dht21,dht22
+            rh = ((int_rh * 256) + dec_rh)/10
+            t = (((int_t & 0x7F) * 256) + dec_t)/10
+            if (int_t & 0x80) > 0:
+                t *= -1
         return DTHResult(DTHResult.ERR_NO_ERROR, t, rh)
 
     def __send_and_sleep(self, output, mysleep):
@@ -89,11 +88,11 @@ class DTH:
         max_unchanged_count = 100
         last = -1
         data = []
-        m = bytearray(800)        # needs long sample size to grab all the bits from the DHT
+        m = bytearray(800)  # needs long sample size to grab all the bits from the DHT # noqa
         irqf = disable_irq()
         self.__pin(1)
         for i in range(len(m)):
-            m[i] = self.__pin()      ## sample input and store value
+            m[i] = self.__pin()  # sample input and store value
         enable_irq(irqf)
         for i in range(len(m)):
             current = m[i]
@@ -105,7 +104,7 @@ class DTH:
                 unchanged_count += 1
                 if unchanged_count > max_unchanged_count:
                     break
-        #print(data)
+        # print(data)
         return data
 
     def __parse_data_pull_up_lengths(self, data):
@@ -117,8 +116,8 @@ class DTH:
 
         state = STATE_INIT_PULL_UP
 
-        lengths = [] # will contain the lengths of data pull up periods
-        current_length = 0 # will contain the length of the previous period
+        lengths = []  # will contain the lengths of data pull up periods
+        current_length = 0  # will contain the length of the previous period
 
         for i in range(len(data)):
 
@@ -141,14 +140,16 @@ class DTH:
                     continue
             if state == STATE_DATA_FIRST_PULL_DOWN:
                 if current == 0:
-                    # we have the initial pull down, the next will be the data pull up
+                    # we have the initial pull down,
+                    # the next will be the data pull up
                     state = STATE_DATA_PULL_UP
                     continue
                 else:
                     continue
             if state == STATE_DATA_PULL_UP:
                 if current == 1:
-                    # data pulled up, the length of this pull up will determine whether it is 0 or 1
+                    # data pulled up, the length of this pull up
+                    # will determine whether it is 0 or 1
                     current_length = 0
                     state = STATE_DATA_PULL_DOWN
                     continue
@@ -156,7 +157,8 @@ class DTH:
                     continue
             if state == STATE_DATA_PULL_DOWN:
                 if current == 0:
-                    # pulled down, we store the length of the previous pull up period
+                    # pulled down, we store the length of
+                    # the previous pull up period
                     lengths.append(current_length)
                     state = STATE_DATA_PULL_UP
                     continue
@@ -202,7 +204,7 @@ class DTH:
             if ((i + 1) % 8 == 0):
                 the_bytes.append(byte)
                 byte = 0
-        #print(the_bytes)
+        # print(the_bytes)
         return the_bytes
 
     def __calculate_checksum(self, the_bytes):
