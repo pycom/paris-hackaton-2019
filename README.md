@@ -1,4 +1,4 @@
-# paris-hackaton-2019
+# Paris Hackathon 2019
 
 # Temperature sensor
 To connect the temperature sensor to the device you should connect the following:
