@@ -12,7 +12,7 @@ To connect the temperature sensor to the device you should connect the following
 pybytes.set_config('network_preferences', ['wifi'])
 pybytes.reconnect()
 ```
-* enable debugging
+* Enable Debugging
 ```python
 import pycom
 pycom.nvs_set('pybytes_debug', 6)
