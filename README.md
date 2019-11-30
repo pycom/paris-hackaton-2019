@@ -6,6 +6,13 @@ To connect the temperature sensor to the device you should connect the following
 * `-` to the *GND*
 * `out` to the `P23` pin
 
+# Code Snippet
+* switch to *wifi* network and *reconnect*
+```python
+pybytes.set_config('network_preferences', ['wifi'])
+pybytes.reconnect()
+```
+
 # Solutions
 * `sudo chmod 755 FILE_NAME`
 
