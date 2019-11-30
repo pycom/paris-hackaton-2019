@@ -17,7 +17,11 @@ pybytes.reconnect()
 import pycom
 pycom.nvs_set('pybytes_debug', 6)
 ```
-
+* Change or Set Lora Region
+```python
+from network import LoRa
+pybytes.update_config('lora', { 'region': LoRa.EU868 })
+```
 
 # Solutions
 * `sudo chmod 755 FILE_NAME`
