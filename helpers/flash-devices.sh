@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
 
 # get Wireless MAC Address
-# import machine;
-# import ubinascii;
-# ubinascii.hexlify(machine.unique_id())
+# import machine; import ubinascii; ubinascii.hexlify(machine.unique_id()).decode('ascii').upper()
 
 # https://www.devdungeon.com/content/taking-command-line-arguments-bash
-MINICOM_ONLY=true
+MINICOM_ONLY=false
 
 #!/bin/bash
 for arg in "$@"
