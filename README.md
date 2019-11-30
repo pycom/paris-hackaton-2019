@@ -22,6 +22,10 @@ pycom.nvs_set('pybytes_debug', 6)
 from network import LoRa
 pybytes.update_config('lora', { 'region': LoRa.EU868 })
 ```
+* Send Data to Pybytes
+```python
+pybytes.send_signal(SIGNAL_NUMBER, DATA)
+```
 
 # Solutions
 * `sudo chmod 755 FILE_NAME`
