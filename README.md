@@ -15,3 +15,6 @@ To connect the temperature sensor to the device you should connect the following
 * [LoPy4](https://software.pycom.io/downloads/pybytes/LoPy4.html)
 * [GPy](https://software.pycom.io/downloads/pybytes/GPy.html)
 * [WiPy](https://software.pycom.io/downloads/pybytes/WiPy.html)
+
+# References
+* [Pybytes documentation](https://docs.pycom.io/pybytes/)
