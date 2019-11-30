@@ -26,7 +26,10 @@ pybytes.update_config('lora', { 'region': LoRa.EU868 })
 ```python
 pybytes.send_signal(SIGNAL_NUMBER, DATA)
 ```
-
+* Deep Sleep
+```python
+pybytes.deepsleep(10000)  # 10 sec sleep
+```
 # Solutions
 * `sudo chmod 755 FILE_NAME`
 
