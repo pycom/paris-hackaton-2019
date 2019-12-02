@@ -17,7 +17,7 @@ do
 done
 
 FW_TYPE="pybytes-production"
-FW_VERSION="1.20.1.r1"
+FW_VERSION="1.20.1.r2"
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 LOG_DIR="${SCRIPT_DIR}/logs"
 FW_PATH="${SCRIPT_DIR}/${FW_TYPE}/${FW_VERSION}"
