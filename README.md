@@ -22,8 +22,9 @@
     cd %USERPROFILE%/.atom/packages/pymakr/node_modules/\@serialport/bindings
     ```
     * Run
+    ```bash
+    prebuild-install --runtime electron --target 4.2.7 --tag-prefix @serialport/bindings@ --verbose
     ```
-    prebuild-install --runtime electron --target 4.2.7 --tag-prefix @serialport/bindings@ --verbose```
 
 * Pycom Firmware Updater
   * [Installation Steps](https://pycom.io/downloads/#firmware)
