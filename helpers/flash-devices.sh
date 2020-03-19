@@ -41,4 +41,20 @@ doMagic () {
   fi
 }
 
-doMagic "Jovial-keller" "FiPy" "/dev/tty." "807D3AC2DDC0"
+
+# doMagic "FiPy-807D3AC2DDC0" "FiPy" "/dev/tty.usbmodemPyb4ed8a1" "807D3AC2DDC0"
+# doMagic "FiPy-807D3AC343A4" "FiPy" "/dev/tty.usbmodemPy6995751" "807D3AC343A4"
+# doMagic "FiPy-807D3AC2DDC0" "FiPy" "/dev/tty.usbmodemPyb4ed8a1" "807D3AC2DDC0"
+# doMagic "FiPy-807D3AC34244" "FiPy" "/dev/tty.usbmodemPybe3cb51" "807D3AC34244"
+# doMagic "FiPy-807D3AC3441C" "FiPy" "/dev/tty.usbmodemPy6588f51" "807D3AC3441C"
+# doMagic "FiPy-807D3AC34430" "FiPy" "/dev/tty.usbmodemPy667c3c1" "807D3AC34430"
+# doMagic "FiPy-807D3AC268C8" "FiPy" "/dev/tty.usbmodemPyeb07361" "807D3AC268C8"
+doMagic "WiPy-30AEA42D1888" "WiPy" "/dev/tty.usbmodemPyae536c1" "30AEA42D1888"
+# doMagic "FiPy-466a9c1" "FiPy" "/dev/tty.usbmodemPy466a9c1" "466a9c1"
+# doMagic "FiPy-5f51eb1" "FiPy" "/dev/tty.usbmodemPy5f51eb1" "5f51eb1"
+#
+# doMagic "Jovial-keller" "FiPy" "/dev/tty.usbmodemPyadad0c1" "807D3AC31340"
+# doMagic "Dreamy-shirley" "LoPy4" "/dev/tty.usbmodemPyc6b8231" "30AEA42D32A4"
+# doMagic "Khaki-harbor" "LoPy4" "/dev/tty.usbmodemPyc699771" "30AEA42D32D8"
+# doMagic "Orange-regret" "GPy" "/dev/tty.usbmodemPy935f161" "30AEA42CEC4C"
+# doMagic "Square-swim" "FiPy" "/dev/tty.usbmodemPy8d75da1" "807D3AC322A8"
